@@ -9,11 +9,11 @@ resposta = cliente.chat.completions.create(
     messages=[
         {
             "role": "system",
-            "content": "fale como um professor do sexto ano"
+            "content": "fale como um aluno do nono ano do ensino medio"
         },
         {
             "role" : "user",
-            "content" : "explique a fotossintese"
+            "content" : "qual é a formula do teorema de pitagoras?"
         }
         
     ],
