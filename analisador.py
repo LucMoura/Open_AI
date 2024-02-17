@@ -1,12 +1,17 @@
+#Para funcionar esta, basta dar play e olhar a pasta dados com os comentários feitos pela IA
+
+
 from openai import *
 from dotenv import load_dotenv
 import os
+import openai
 
 
 load_dotenv()
 
 client = OpenAI(api_key=os.getenv("OPEN_API_KEY"))
 modelo = "gpt-3.5-turbo"
+
 
 
 def carrega(nome_do_arquivo):
@@ -54,11 +59,21 @@ def analisador(produto):
         }
     ]
     
-    resposta = client.chat.completions.create(
-        messages = lista_mensagens,
-        model=modelo
-    )
+    try:
+        resposta = client.chat.completions.create(
+            messages = lista_mensagens,
+            model=modelo
+        )
+        
+        texto_resposta = resposta.choices[0].message.content
+        salva(f"./dados/analise-{produto}.txt", texto_resposta)
+    except openai.AuthenticationError as e:
+        print(f"Erro de Autenticação: {e}")
+    except openai.APIError as e:
+        print(f"Erro de API: {e}")
 
-    texto_resposta = resposta.choices[0].message.content
-    salva(f"./dados/analise-{produto}.txt", texto_resposta)
-analisador("ponteira")
+
+
+lista_de_produtos = ["Capa de volante", "Suporte para celular", "Ponteira de Escapamento"]
+for um_produto in lista_de_produtos:
+    analisador(um_produto)

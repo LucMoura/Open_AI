@@ -2,6 +2,8 @@ from openai import OpenAI
 from dotenv import load_dotenv
 import os
 #APENAS COLOQUE O CÓDIGO PARA FUNCIONAR
+#Neste caso aqui você seleciona as categorias que deseja e depois coloca um produto
+#Ai a própria IA dirá a qual classe ela pertence (caso tenha alguma)
 
 load_dotenv()
 cliente = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))

@@ -2,6 +2,9 @@ from openai import OpenAI
 from dotenv import load_dotenv
 import os
 #APENAS COLOQUE O CÓDIGO PARA FUNCIONAR
+#Nesta daqui, coloque um objeto com base nas categorias abaixo
+
+
 
 load_dotenv()
 cliente = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
@@ -20,6 +23,12 @@ prompt_sistema = """
     - Sistema de escape
     - Fluidos
     - Sistema de ignição
+    - Utilitarios
+    - Moda
+    - Cozinha
+    - Autocuidado
+    - Jogos
+    - Computador
     
     
     
